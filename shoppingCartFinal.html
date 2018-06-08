@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Shopping Cart</title>
+	<style>table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}</style>
+</head>
+<body style ="background-color:grey"><br>
+	<script>var itemShoes = {name:"Shoes", price: 67.99, quantity: 0};
+var itemCoat = {name:"Coats", price: 78.99, quantity: 0};
+var itemBook = {name:"Books", price: 9.99, quantity: 0};
+var price;
+var input2;
+var i=0;
+var total = 0;
+var taxPercent = .075;
+var taxApplied;
+var quantityShoes = 0;
+var quantityCoats = 0;
+var quantityBooks = 0;
+  
+
+
+function submitCart(){
+  quantityShoes = parseInt(document.getElementById('shoesQty').value, 10);
+  itemShoes.quantity = quantityShoes;
+  quantityCoats = parseInt(document.getElementById('coatsQty').value, 10);
+  itemCoat.quantity = quantityCoats;
+  quantityBooks = parseInt(document.getElementById('booksQty').value, 10);
+  itemBook.quantity = quantityBooks;
+  
+  total = (quantityShoes*67.99) + (quantityCoats*78.99) + (quantityBooks*9.99);
+  if(total >= 100){
+  alert("You qualify to set up a credit line")
+  }else{
+  alert("A cash payment is required");
+  }
+  alert("Subtotal:\t" +total);
+  taxApplied = total * taxPercent;
+  total += taxApplied
+  alert("Tax:\t    " +taxApplied )
+  alert("Total:\t   " +total);
+}</script>
+  <h1 style="text-align:center">Shopping Cart</h1>
+  <h4>Enter quantity below and update cart:</h4> 
+  <table>
+  <tr>
+    <th>Item</th>
+    <th>Price</th>
+    <th>Quantity</th>
+  </tr>
+  <tr>
+    <td>Shoes</td>
+    <td>$67.99</td>
+    <td><input id="shoesQty" type="number" style="width: 50px" value='0'> </h3></td>
+  </tr>
+  <tr>
+    <td>Coats</td>
+    <td>$78.99</td>
+    <td><input id="coatsQty" type="number" style="width: 50px" value='0'> </h3></td>
+  </tr>
+  <tr>
+    <td>Books</td>
+    <td>$9.99</td>
+    <td><input id="booksQty" type="number" style="width: 50px" value='0'> </h3></td>
+  </tr>
+</table>
+<div style="padding-top:10px">
+  
+  <button onClick='submitCart();' style ="width: 100px; Height: 25px; padding-left:10px;"> Submit </button>
+</div>
+  </body>
+</html>
